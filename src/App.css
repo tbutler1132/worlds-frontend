@@ -2,37 +2,61 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.recs-page {
+  display: flex;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.left-sidebar {
+  border: solid;
+  height: 100vh;
+  width: 20%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.recs-main-container {
+  width: 80%;
+  padding-top: 16px;
+}
+
+.profile-container {
+  height: 667px;
+  width: 375px;
+  box-shadow: 0 2px 6px 0 rgb(185 191 200 / 74%);
+  border-radius: 8px;
+  margin: auto;
   display: flex;
   flex-direction: column;
+}
+
+.profile-container-picture-container {
+  height: 75%;
+}
+
+.profile-content {
+  height: 25%;
+  overflow: scroll;
+}
+
+.profile-content-header {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
 }
 
-.App-link {
-  color: #61dafb;
+.profile-content-block {
+  border-bottom: solid;
+  border-width: thin;
+  border-color: grey;
+  padding: 7px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.profile-displayed-picture {
+  object-fit: fill;
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar-nav {
+  height: 60px;
+  margin-top: 0;
+  background-image: linear-gradient(45deg, rgb(253, 38, 122), rgb(255, 96, 54))
 }
