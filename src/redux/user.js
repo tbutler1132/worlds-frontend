@@ -9,6 +9,14 @@ export const signupUser = createAsyncThunk(
   }
 )
 
+export const signinUser = createAsyncThunk(
+  'users/signin',
+  async (userObj) => {
+    const res = await axios.post('http://localhost:7000/users/signin', userObj)
+    return res.data
+  }
+)
+
 export const userSlice = createSlice({
   name: 'user',
   initialState: { currentUser: {} },
@@ -23,11 +31,22 @@ export const userSlice = createSlice({
     },
     [signupUser.fulfilled]: (state, { payload }) => {
       state.currentUser = payload.result
+      localStorage.setItem("currentUser", JSON.stringify(payload.result))
       state.status = "success"
     },
     [signupUser.rejected]: (state) => {
       state.status = "failed"
-    }
+    },
+    [signinUser.pending]: (state) => {
+      state.status = "loading"
+    },
+    [signinUser.fulfilled]: (state, { payload }) => {
+      state.currentUser = payload.result
+      state.status = "success"
+    },
+    [signinUser.rejected]: (state) => {
+      state.status = "failed"
+    },
   }
 })
 
