@@ -31,12 +31,14 @@ export const userSlice = createSlice({
     },
     [signupUser.fulfilled]: (state, { payload }) => {
       state.currentUser = payload.result
+      //Side effect, shouldn't occur in reducer. So change this.
       localStorage.setItem("currentUser", JSON.stringify(payload.result))
       state.status = "success"
     },
     [signupUser.rejected]: (state) => {
       state.status = "failed"
     },
+    
     [signinUser.pending]: (state) => {
       state.status = "loading"
     },

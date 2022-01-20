@@ -13,15 +13,8 @@ function Signin() {
 
     const user = useSelector((state) => state.user) 
 
-    if(Object.keys(user.currentUser).length) return <Navigate to="/recs" replace={true}/>
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <label>Username</label>
-            <input {...register("username")} />
-            <label>Password</label>
-            <input {...register("password")} />
-            <input type="submit" />
-        </form>
+        <a href="http://localhost:7000/users/spotify/login">Sign in with Spotify</a>
     );
 }
 

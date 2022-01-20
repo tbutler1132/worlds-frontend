@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ProfileContent(props) {
+function ProfileContent({ profile }) {
 
     const tags = ["hi", "bye", "sev", "tunnels"]
 
     const renderTags = () => {
         return tags.map(tag => 
-            <p>{tag}</p>
+            <p key={tag}>{tag}</p>
         )
     }
 
@@ -14,7 +14,7 @@ function ProfileContent(props) {
         <div className='profile-content'>
             <div className="profile-content-block">
                 <div className="profile-content-header">
-                    <h2>Name</h2>
+                    <h2>{profile.display_name}</h2>
                     <h2>Rapper</h2>
                 </div>
                 <div className="profile-content-subheader">
