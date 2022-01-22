@@ -1,31 +1,18 @@
 import './App.css';
 import RecsPage from './components/RecsPage';
-import { Route, Routes, useLocation } from 'react-router';
-import Signup from './components/Signup';
-import Signin from './components/Signin';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { setUser } from './redux/user';
-import axios from 'axios';
-
+import { Route, Routes } from 'react-router';
+import { useSearchParams } from 'react-router-dom';
+import Signup from './components/Login/Signup';
+import Signin from './components/Login/Signin';
+import EditInfo from './components/editProfile/EditInfo';
 
 function App() {
-  const dispatch = useDispatch()
-  const location = useLocation()
+  let [searchParams] = useSearchParams();
 
-  const code = new URLSearchParams(window.location.search).get("code")
+  let code = searchParams.get("code");
 
-  useEffect(() => {
-    const user = localStorage.getItem("currentUser")
 
-    if(user){
-      dispatch(setUser(JSON.parse(user)))
-    }
-  })
 
-  useEffect(() => {
-    //If there is no current user, check the url and send a request to get the user
-  })
 
   return (
     <div className="App">
@@ -33,6 +20,7 @@ function App() {
         <Route path='signup' element={<Signup />} />
         <Route path='signin' element={<Signin />} />
         <Route path='recs' element={<RecsPage code={code}/>} />
+        <Route path='profile' element={<EditInfo code={code}/>} />
       </Routes>
     </div>
   );

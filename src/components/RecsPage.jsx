@@ -1,12 +1,22 @@
 import React from 'react';
 import LeftSideBar from './LeftSideBar';
 import RecsMainContainer from './RecsMainContainer';
-import useAuth from '../hooks/useAuth';
+import { spotifyLogin} from '../redux/user';
+import { useSearchParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
-function RecsPage({code}) {
-    const accessToken = useAuth(code)
+function RecsPage() {
+    let dispatch = useDispatch()
+    let [searchParams] = useSearchParams();
 
-    if(!accessToken) return <div>Loading...</div>
+    useEffect(() => {
+        let code = searchParams.get("code");
+        if(code){
+            dispatch(spotifyLogin(code))
+        }
+    }, [dispatch, searchParams])
+
     return (
         <div className='recs-page'>
             <LeftSideBar />

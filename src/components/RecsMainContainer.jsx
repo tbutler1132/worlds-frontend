@@ -16,8 +16,6 @@ function RecsMainContainer() {
         dispatch(getPotentialMatches())
     }, [dispatch])
 
-    console.log("Match", matches)
-
     if(!matches.potential.length) return <div>Loading...</div>
     return (
         <div className='recs-main-container'>
