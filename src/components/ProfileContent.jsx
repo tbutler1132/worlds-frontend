@@ -15,7 +15,7 @@ function ProfileContent({ profile }) {
             <div className="profile-content-block">
                 <div className="profile-content-header">
                     <h2>{profile.display_name}</h2>
-                    <h2>Rapper</h2>
+                    <h2>{profile.role}</h2>
                 </div>
                 <div className="profile-content-subheader">
                     <span>Location</span>

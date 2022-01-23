@@ -12,7 +12,7 @@ function Signup() {
 
     const user = useSelector((state) => state.user) 
 
-    if(Object.keys(user.currentUser).length) return <Navigate to="/recs" replace={true}/>
+    if(Object.keys(user.currentUser).length) return <Navigate to="/profile" replace={true}/>
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <label>Email</label>

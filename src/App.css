@@ -27,6 +27,14 @@
   flex-direction: column;
 }
 
+#about-text-editor-container {
+  height: 400px;
+}
+
+#about-text-editor-container textarea {
+  width: 90%;
+}
+
 .profile-container-picture-container {
   height: 75%;
 }
@@ -59,4 +67,20 @@
   height: 60px;
   margin-top: 0;
   background-image: linear-gradient(45deg, rgb(253, 38, 122), rgb(255, 96, 54))
+}
+
+
+/* PILL */
+
+.pill {
+  background-color: #ddd;
+  border: none;
+  color: rgb(173, 13, 13);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
 }

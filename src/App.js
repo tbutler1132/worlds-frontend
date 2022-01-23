@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router';
 import { useSearchParams } from 'react-router-dom';
 import Signup from './components/Login/Signup';
 import Signin from './components/Login/Signin';
-import EditInfo from './components/editProfile/EditInfo';
+import ProfilePage from './components/ProfilePage';
 
 function App() {
   let [searchParams] = useSearchParams();
@@ -20,7 +20,7 @@ function App() {
         <Route path='signup' element={<Signup />} />
         <Route path='signin' element={<Signin />} />
         <Route path='recs' element={<RecsPage code={code}/>} />
-        <Route path='profile' element={<EditInfo code={code}/>} />
+        <Route path='profile' element={<ProfilePage code={code}/>} />
       </Routes>
     </div>
   );

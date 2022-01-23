@@ -1,6 +1,6 @@
 import React from 'react';
-import EditProfileMainContainer from './EditProfileMainContainer';
-import EditProfileLeftSidebar from './EditProfileLeftSidebar';
+import EditProfileMainContainer from '././editProfile/EditProfileMainContainer';
+import EditProfileLeftSidebar from '././editProfile/EditProfileLeftSidebar';
 
 function EditInfo(props) {
     return (
