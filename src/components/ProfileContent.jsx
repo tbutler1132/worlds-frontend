@@ -18,7 +18,7 @@ function ProfileContent({ profile }) {
                     <h2>{profile.role}</h2>
                 </div>
                 <div className="profile-content-subheader">
-                    <span>Location</span>
+                    <span>{profile.location}</span>
                 </div>
             </div>
             <div className="profile-content-block">

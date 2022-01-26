@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import EditProfile from './EditProfile';
-import ProfileContainer from '../ProfileContainer';
+import Profile from '../Profile';
 import { useSelector } from 'react-redux';
 
 function EditProfileMainContainer(props) {
@@ -10,9 +10,9 @@ function EditProfileMainContainer(props) {
         <div className='recs-main-container'>
             {editMode 
             ? <EditProfile toggleEditMode={toggleEditMode}/>    
-            : <ProfileContainer me={true} profile={currentUser}/>
+            : <Profile me={true} profile={currentUser}/>
             }
-            <button onClick={() => toggleEditMode(true)}>Edit</button>
+            <button onClick={() => toggleEditMode(!editMode)}>Edit</button>
         </div>
     );
 }

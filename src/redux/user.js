@@ -28,7 +28,7 @@ export const spotifyLogin = createAsyncThunk(
 )
 
 export const updateUser = createAsyncThunk(
-  'users/updateRole',
+  'users/updateUser',
   async({id, edit}) => {
     const res = await axios.patch(`http://localhost:7000/users/${id}`, edit)
     return res.data

@@ -1,13 +1,25 @@
 import React from 'react';
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form'
 
-function EditRadio({ toggleView, options, type, submitHandler }) {
+// PROPS:
+// - Options: Checkbox options
+// - Type: Prompt form is asking for
+// - Submithandler: What to do with submitted values
+// - Default value: Value that should be defaulted
 
-    const { register, handleSubmit } = useForm();
+function EditRadio({ options, type, submitHandler, defaultValue }) {
+
+    const { register, handleSubmit, setValue } = useForm();
     const onSubmit = (data) => {
         submitHandler(data)
     };
+
+    useEffect(() => {
+        if(defaultValue){
+            setValue(type, defaultValue)
+        }
+    })
 
     const renderOptions = () => {
         return options.map(option => 

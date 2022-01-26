@@ -5,7 +5,7 @@ import EditTags from './EditTags';
 import EditRadio from './EditRadio';
 import EditLocation from './EditLocation';
 import { useSelector } from 'react-redux';
-import { editBio, editLocation, updateUser } from '../../redux/user';
+import { updateUser } from '../../redux/user';
 import { useDispatch } from 'react-redux';
 
 
@@ -26,21 +26,38 @@ function EditProfile({ toggleEditMode }) {
         dispatch(updateUser({id: currentUser._id, edit: userObj}))
     }
 
+    const renderSwitch = (param) => {
+        switch(param){
+            case 'main':
+                return (
+                    <>
+                    {/* <AddMedia /> */}
+                    <h3>About Tim</h3>
+                    <div id='about-text-editor-container'>
+                        <textarea value={bio} onChange={(e) => bioChangeHandler(e)}/>
+                    </div>
+                    <h3 style={{cursor: "pointer"}} onClick={() => toggleView('role')}>Role</h3>
+                    <h3>Tags</h3>
+                    <h3 style={{cursor: "pointer"}} onClick={() => toggleView('location')}>Living In</h3>
+                    <h3>Spotify Anthem</h3>
+                    <button onClick={() => editSubmitHandler({bio: bio})}>Save</button>
+                    </>
+                )
+            case 'role':
+                return <EditRadio submitHandler={editSubmitHandler} options={roleOptions} type="role" toggleView={toggleView} defaultValue={currentUser.role}/>
+            case 'tags':
+                return <EditTags submitHandler={editSubmitHandler} options={tagOptions} tags={currentUser.tags} type='tags' defaultValue={currentUser.tags}/>
+            case 'location':
+                return <EditLocation submitHandler={editSubmitHandler}/>
+            default: 
+                return null
+        }
+    }
+
     return (
         <div style={{overflow: "scroll"}} className='profile-container'>
-            <AddMedia />
-            <h3>About Tim</h3>
-            <div id='about-text-editor-container'>
-                <textarea value={bio} onChange={(e) => bioChangeHandler(e)}/>
-            </div>
-            <h3 onClick={() => toggleView('role')}>Role</h3>
-            <h3>Tags</h3>
-            <h3>Living In</h3>
-            <h3>Spotify Anthem</h3>
-            <EditRadio submitHandler={editSubmitHandler} options={roleOptions} type="role" role={currentUser.role} toggleView={toggleView}/>
-            <EditTags submitHandler={editSubmitHandler} options={tagOptions} tags={currentUser.tags} type='tags' options={tagOptions}/>
-            <EditLocation submitHandler={editSubmitHandler}/>
-            <button onClick={() => editSubmitHandler({bio: bio})}>Save</button>
+            <button onClick={() => toggleView('main')}>Temp</button>
+            {renderSwitch(view)}
         </div>
     );
 }

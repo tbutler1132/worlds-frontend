@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 
@@ -15,14 +15,19 @@ const pill = {
     borderRadius: '16px',
 }
 
-function EditTags({ tags, options, type, submitHandler }) {
-    const [currentTags, setTags] = useState(tags)
+function EditTags({ options, type, submitHandler, defaultValue }) {
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, setValue } = useForm();
     const onSubmit = (data) => {
         console.log(data)
         submitHandler(data)
     };
+
+    useEffect(() => {
+        if(defaultValue){
+            setValue(type, defaultValue)
+        }
+    })
 
     const renderOptions= () => {
         return options.map(option => 
@@ -43,8 +48,6 @@ function EditTags({ tags, options, type, submitHandler }) {
                 {renderOptions()}
                 <input type="submit" />
             </form>
-            {/* <h5>Tags</h5>
-            {renderPillButtons()} */}
         </div>
     );
 }
