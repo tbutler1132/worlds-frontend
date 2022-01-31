@@ -9,11 +9,12 @@ function RecsMainContainer() {
     const [displayedMatch, changeMatch] = useState(0)
 
     const matches = useSelector((state) => state.matches) 
+    const { _id }  = useSelector((state) => state.user.currentUser)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getPotentialMatches())
+        dispatch(getPotentialMatches(_id))
     }, [dispatch])
 
     if(!matches.potential.length) return <div>Loading...</div>

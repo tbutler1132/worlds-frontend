@@ -4,6 +4,7 @@ import { useState } from 'react';
 import EditTags from './EditTags';
 import EditRadio from './EditRadio';
 import EditLocation from './EditLocation';
+import EditPhotos from './EditPhotos';
 import { useSelector } from 'react-redux';
 import { updateUser } from '../../redux/user';
 import { useDispatch } from 'react-redux';
@@ -33,6 +34,7 @@ function EditProfile({ toggleEditMode }) {
                     <>
                     {/* <AddMedia /> */}
                     <h3>About Tim</h3>
+                    <EditPhotos />
                     <div id='about-text-editor-container'>
                         <textarea value={bio} onChange={(e) => bioChangeHandler(e)}/>
                     </div>
@@ -56,7 +58,7 @@ function EditProfile({ toggleEditMode }) {
 
     return (
         <div style={{overflow: "scroll"}} className='profile-container'>
-            <button onClick={() => toggleView('main')}>Temp</button>
+            <button onClick={() => toggleView('main')}>Temp Toggle main</button>
             {renderSwitch(view)}
         </div>
     );

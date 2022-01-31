@@ -5,7 +5,6 @@ export const signupUser = createAsyncThunk(
   'users/signup',
   async (userObj) => {
     const res = await axios.post('http://localhost:7000/users/signup', userObj)
-    console.log(res.data)
     return res.data
   }
 )
@@ -35,6 +34,15 @@ export const updateUser = createAsyncThunk(
   }
 )
 
+export const likeUser = createAsyncThunk(
+  'users/like',
+  async({likerId, likedId}) => {
+    const res = await axios.patch(`http://localhost:7000/users/${likerId}/like?liked=${likedId}`)
+    console.log("DATA", res.data)
+    return res.data
+  }
+)
+
 export const userSlice = createSlice({
   name: 'user',
   initialState: { currentUser: {}, spotifyUser: {}, auth: {}},
@@ -50,6 +58,7 @@ export const userSlice = createSlice({
       },
   },
   extraReducers: {
+
     [signupUser.pending]: (state) => {
       state.status = "loading"
     },
@@ -60,6 +69,9 @@ export const userSlice = createSlice({
     [signupUser.rejected]: (state) => {
       state.status = "failed"
     },
+
+
+
     
     [signinUser.pending]: (state) => {
       state.status = "loading"
@@ -71,6 +83,9 @@ export const userSlice = createSlice({
     [signinUser.rejected]: (state) => {
       state.status = "failed"
     },
+
+
+
 
     [spotifyLogin.pending]: (state) => {
       state.status = "loading"
@@ -85,6 +100,9 @@ export const userSlice = createSlice({
       state.status = "failed"
     },
 
+
+
+
     [updateUser.pending]: (state) => {
       state.status = "loading"
     },
@@ -93,6 +111,19 @@ export const userSlice = createSlice({
       state.status = "success"
     },
     [updateUser.rejected]: (state) => {
+      state.status = "failed"
+    },
+
+    [likeUser.pending]: (state) => {
+      state.status = "loading"
+    },
+    [likeUser.fulfilled]: (state, { payload }) => {
+      if(payload){
+        state.currentUser.matches.push(payload)
+      }
+      state.status = "success"
+    },
+    [likeUser.rejected]: (state) => {
       state.status = "failed"
     },
   }

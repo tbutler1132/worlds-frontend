@@ -69,6 +69,20 @@
   background-image: linear-gradient(45deg, rgb(253, 38, 122), rgb(255, 96, 54))
 }
 
+.edit-photo-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 10px;
+}
+
+.pic-container {
+  background-color: gainsboro;
+  height: 100px;
+  width: 90%;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 
 /* PILL */
 
